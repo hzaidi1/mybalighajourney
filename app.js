@@ -541,7 +541,7 @@ function render(){
   app.innerHTML = `
     ${topbar()}
     <main><div class="screen">${screenHTML()}</div></main>
-    <footer>Made with care for a Saturday school lesson · My Baligha Journey</footer>
+    <footer> Created by Shoa Mehar Zaidi · My Baligha Journey</footer>
   `;
   attachEvents();
 }

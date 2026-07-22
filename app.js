@@ -931,7 +931,7 @@ function screenBonusClose(){
     <div class="hadith-block">
       <span style="font-size:0.8rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold-deep);">The Prophet Muhammad (s) said</span>
       <p class="say">“The example of my Ahlul Bayt among you is like the Ark of Nuh. Whoever boards it is saved, and whoever turns away from it is drowned.”</p>
-      <p class="ref">Hadith al-Safinah — al-Hakim, al-Mustadrak ‘ala al-Sahihayn</p>
+      <p class="ref"></p>
     </div>
     <div class="talk"><span>💗</span><p>When we love and follow Ahlul Bayt (A.S.), they guide us safely to Allah.</p></div>
     <div class="actions">

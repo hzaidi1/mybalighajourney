@@ -969,7 +969,7 @@ function footerLine(){
   };
   let label = map[state.screen];
   if (!label) label = QUESTION_ORDER.includes(state.screen) ? "Menu" : (BONUS_ORDER.includes(state.screen) ? "Qur’an & Ahlul Bayt" : "My Baligha Journey");
-  return `<footer><span>${label}</span><span>My Baligha Journey · a Saturday school lesson</span></footer>`;
+  return `<footer><span>${label}</span><span>My Baligha Journey · Shoa Mehar Zaidi </span></footer>`;
 }
 
 function render(){

@@ -43,7 +43,7 @@ const QUESTIONS = [
     ref:"Qur’an 2:286 · Sistani Summary of Rules, Issue 2" },
   { id:"q6", num:6, title:"What are wajib, haram, mustahabb, and makruh?", tagline:"A small Sharia vocabulary slide",
     a:{label:"Four words", text:"Wajib = must do. Haram = must avoid. Mustahabb = loved and recommended. Makruh = better to avoid."},
-    b:{label:"Kid example", text:"Wajib: daily prayers. Haram: lying. Mustahabb: extra salawat. Makruh: something better left."},
+    b:{label:"Example", text:"Wajib: daily prayers. Haram: lying. Mustahabb: extra salawat. Makruh: something better left."},
     talk:"Which word means “Allah loves it, but it is not required”?",
     ref:"General Shia fiqh terminology" },
   { id:"q7", num:7, title:"Why do I pray and fast?", tagline:"Worship builds a strong, bright heart",
@@ -92,6 +92,19 @@ const QUESTIONS = [
     talk:"Do you know the name of the marja‘ your family follows?",
     ref:"General Shia fiqh practice · Sistani.org, Introduction to Taqleed" },
 ];
+
+/* ---------------- important section: niyyah for taqleed ---------------- */
+
+const NIYYAH = {
+  eyebrow: "An Important First Step",
+  title: "Niyyah for Taqleed",
+  tagline: "When a girl becomes baligha, she needs a niyyah for taqleed too — not just for salah and fasting.",
+  a: { label:"Simple answer", text:"Niyyah means intention. Just like I make a niyyah in my heart before I pray or fast, I also need to make a niyyah for taqleed — deciding, sincerely, that I am following a qualified marja‘ because I want to please Allah, not just out of habit." },
+  b: { label:"Heart answer", text:"Once I become baligha, every one of my actions is written down and matters. Taqleed only truly counts as worship when I choose it on purpose, for Allah — not because everyone in my family already does it." },
+  sample: "“I intend to perform taqleed of my marja‘, sincerely seeking closeness to Allah.”",
+  talk: "Do you know who your family's marja‘ is? If not, that's a great question to ask a parent or teacher this week.",
+  ref: "General Shia fiqh practice · Sistani.org, Introduction to Taqleed",
+};
 
 const GAME = {
   question:"When a girl becomes baligha, what is the main message?",
@@ -403,6 +416,31 @@ function menuTile(q){
   </button>`;
 }
 
+function screenNiyyah(){
+  return `
+  <div class="card stack">
+    <div>
+      <span class="eyebrow">${NIYYAH.eyebrow}</span>
+      <h2>${NIYYAH.title}</h2>
+      <p class="lede">${NIYYAH.tagline}</p>
+    </div>
+    <div class="panels">
+      <div class="panel"><h3>${NIYYAH.a.label}</h3><p>${NIYYAH.a.text}</p></div>
+      <div class="panel"><h3>${NIYYAH.b.label}</h3><p>${NIYYAH.b.text}</p></div>
+    </div>
+    <div class="hadith-block">
+      <span style="font-size:0.8rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold-deep);">A sample niyyah</span>
+      <p class="say">${NIYYAH.sample}</p>
+    </div>
+    <div class="talk"><span>💬</span><p><b>Turn &amp; Talk:</b> ${NIYYAH.talk}</p></div>
+    <p class="refline">${NIYYAH.ref}</p>
+    <div class="actions">
+      <button class="btn btn-primary" data-nav="menu">Back to Menu ${ICONS.arrow}</button>
+      <span></span>
+    </div>
+  </div>`;
+}
+
 function screenMenu(){
   const tiles = QUESTIONS.map(menuTile).join("");
   return `
@@ -438,6 +476,12 @@ function screenMenu(){
         </div>
       </div>
     </div>
+
+    <button class="tile special" data-nav="niyyah" style="display:block; text-align:left; width:100%; padding:20px 22px;">
+      <span class="tag">💛 Important</span>
+      <span class="q" style="font-size:1.05rem; display:block; margin-top:4px;">Niyyah for Taqleed — an important first step</span>
+      <span style="display:block; margin-top:4px; font-weight:600; color:var(--ink-soft); font-size:0.85rem;">When a girl becomes baligha, she needs a niyyah for taqleed too. Tap to learn what that means.</span>
+    </button>
 
     <div>
       ${ornament("Choose a question")}
@@ -837,7 +881,7 @@ function screenBonusIntro(){
     <div class="hadith-block" style="margin-top:4px;">
       <span style="font-size:0.8rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold-deep);">The Prophet Muhammad (saww) said</span>
       <p class="say">“I leave behind two weighty things among you: the Book of Allah (the Qur’an) and my Ahlul Bayt. Hold fast to them, and you will never go astray.”</p>
-      <p class="ref">Sahih al-Thaqalayn</p>
+      <p class="ref">Hadith al-Thaqalayn</p>
     </div>
     <div class="hadith-block" style="margin-top:4px;">
       <span style="font-size:0.8rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--purple);">Who are Ahlul Kisa?</span>
@@ -951,6 +995,7 @@ function screenHTML(){
   if (state.screen === "bonusIntro") return screenBonusIntro();
   if (state.screen === "bonusClose") return screenBonusClose();
   if (state.screen === "references") return screenReferences();
+  if (state.screen === "niyyah") return screenNiyyah();
   const q = QUESTIONS.find(q=>q.id === state.screen);
   if (q) return screenQuestion(q);
   const b = BONUS_QA.find(b=>"bonus"+b.num === state.screen);
@@ -965,11 +1010,11 @@ function footerLine(){
     storyMenu:"Story Time", story1:"Story Time", story2:"Story Time",
     activity:"Story Time", finalChoice:"End of Lesson", dressup:"Dress-Up Challenge",
     bonusIntro:"Qur’an & Ahlul Bayt", bonusClose:"Qur’an & Ahlul Bayt",
-    references:"References",
+    references:"References", niyyah:"Niyyah for Taqleed",
   };
   let label = map[state.screen];
   if (!label) label = QUESTION_ORDER.includes(state.screen) ? "Menu" : (BONUS_ORDER.includes(state.screen) ? "Qur’an & Ahlul Bayt" : "My Baligha Journey");
-  return `<footer><span>${label}</span><span>My Baligha Journey · Shoa Mehar Zaidi </span></footer>`;
+  return `<footer><span>${label}</span><span> My Baligha Journey · Shoa Mehar Zaidi </span></footer>`;
 }
 
 function render(){

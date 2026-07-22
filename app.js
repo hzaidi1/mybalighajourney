@@ -259,19 +259,19 @@ const ACTIVITY_CHIPS = [
 const DOLL_BASE_IMG = "assets/base_doll.png";
 
 const CLOTHING_ITEMS = [
-  { id:"hijab", zone:"head", modest:true, label:"Hijab", img:"assets/hijab.png", w:95, top:6, z:4 },
-  { id:"hair", zone:"head", modest:false, label:"Hair Down", img:"assets/hair.png", w:200, top:8, z:4 },
-  { id:"shirt_long", zone:"top", modest:true, label:"Long-Sleeve Top", img:"assets/shirt_long.png", w:97, top:36, z:3 },
-  { id:"shirt_short", zone:"top", modest:false, label:"Short-Sleeve Top", img:"assets/shirt_short.png", w:97, top:34, z:3 },
-  { id:"pants", zone:"bottom", modest:true, label:"Loose Pants", img:"assets/pants.png", w:85, top:57, z:2 },
-  { id:"skirt_long", zone:"bottom", modest:true, label:"Long Skirt", img:"assets/skirt_long.png", w:96, top:54, z:2 },
-  { id:"skirt_short", zone:"bottom", modest:false, label:"Short Skirt", img:"assets/skirt_short.png", w:67, top:62, z:2 },
-  { id:"shorts", zone:"bottom", modest:false, label:"Shorts", img:"assets/shorts.png", w:41, top:58, z:2 },
+  { id:"hijab", zone:"head", modest:true, label:"Hijab", img:"assets/hijab.png", w:90, top:-4,left:43, z:4 },
+  { id:"hair", zone:"head", modest:false, label:"Hair Down", img:"assets/hair.png", w:100, top:-4, left:43, z:4 },
+  { id:"shirt_long", zone:"top", modest:true, label:"Long-Sleeve Top", img:"assets/shirt_long.png", w:100, top:24, left:43, z:3 },
+  { id:"shirt_short", zone:"top", modest:false, label:"Short-Sleeve Top", img:"assets/shirt_short.png", w:97, top:24, left:50, z:3 },
+  { id:"pants", zone:"bottom", modest:true, label:"Loose Pants", img:"assets/pants.png", w:87, top:53, left:50, z:2 },
+  { id:"skirt_long", zone:"bottom", modest:true, label:"Long Skirt", img:"assets/skirt_long.png", w:96, top:48, left:48, z:2 },
+  { id:"skirt_short", zone:"bottom", modest:false, label:"Short Skirt", img:"assets/skirt_short.png", w:70, top:50, left:49, z:2 },
+  { id:"shorts", zone:"bottom", modest:false, label:"Shorts", img:"assets/shorts.png", w:80, top:50, left:49, z:2 },
 ];
 
 function clothingLayer(item){
   if (!item) return "";
-  return `<img class="cloth-layer" src="${item.img}" alt="${item.label}" style="width:${item.w}%; top:${item.top}%; z-index:${item.z};" />`;
+  return `<img class="cloth-layer" src="${item.img}" alt="${item.label}" style="width:${item.w}%; top:${item.top}%; left:${item.left}%; z-index:${item.z};" />`;
 }
 
 function buildDoll(d){
